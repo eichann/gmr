@@ -1,0 +1,63 @@
+<p>音楽を追加する</p>
+<div>
+  <%= form_tag('/impressions', :method => :post) do %>
+    <input type="text" id="post" name="url">
+    <input type="submit">
+  <% end %>
+</div>
+
+<!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+
+<h1>good music radio</h1>
+<hr>
+<h1 id="player"></h1>
+<hr>
+
+<div id="start"></div>
+
+<br>
+
+<ul id="movie-list">
+  
+</ul>
+<script>
+  var player;
+
+
+  function onYouTubeIframeAPIReady(){
+    player = new YT.Player('player', {
+      height: 360,
+      width: 640,
+      events: {
+        onStateChange: onPlayerStateChange
+      }
+    });
+
+    $(document).on('click', 'div#start', function(){
+      var randnum = Math.floor( Math.random() * <%= @all_count %> );
+      ary = <%= @impressions.to_json.html_safe %>
+      player.loadVideoById(ary[randnum]);
+    });
+  }
+
+  function onPlayerStateChange(e) {
+    if (e.data == YT.PlayerState.ENDED) {
+      $('#start').trigger('click');
+    }
+  }
+</script>
+
+
+
