@@ -7,11 +7,12 @@ class ImpressionsController < ApplicationController
 
   def create
     @impression = Impression.where(url: url_params[:url]).first_or_initialize
-
-    if @impression.save
-      redirect_to @imperssion, notice: 'ok!'
-    else
-      render :index
+    respond_to do |format|
+      if @impression.save
+        format.js
+      else
+        render :index
+      end
     end
   end
 
