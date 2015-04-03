@@ -1,3 +1,9 @@
+$navbar-default-bg: #030303;
+$light-orange: #ff8c00;
+$navbar-default-color: $light-orange;
+
+@import "bootstrap";
+
 body, ul, h1, h2, h3, h4{
   margin: 0;
   padding: 0;
