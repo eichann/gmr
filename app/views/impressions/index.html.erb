@@ -1,19 +1,18 @@
-<div class="on-image">
-  <img src="/images/contents/main3.jpg" class="main-image">
-  <div class="yt-set clearfix">
-    <div id="player"></div>
-    <div id="start"></div>
-    <div id="stop"></div>
+
+  <div class="wrapper">
+    <div class="yt-set clearfix">
+      <div id="player"></div>
+      <div id="start"></div>
+      <div id="stop"></div>
+    </div>
+    <div class="form-wrap">
+      <%= render :partial => "form"%>
+    </div>
   </div>
-  <div class="form-wrap">
-    <%= render :partial => "form"%>
-  </div>
-</div>
 
 
 <script>
   var player;
-
 
   function onYouTubeIframeAPIReady(){
     player = new YT.Player('player', {
