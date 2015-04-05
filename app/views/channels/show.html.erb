@@ -1,0 +1,39 @@
+<div class="on-image">
+  <img src="/images/contents/main3.jpg" class="main-image">
+  <div class="yt-set clearfix">
+    <div id="player"></div>
+    <div id="start"></div>
+    <div id="stop"></div>
+  </div>
+  <div class="form-wrap">
+    <%= render :partial => "form"%>
+  </div>
+</div>
+
+
+<script>
+  var player;
+
+
+  function onYouTubeIframeAPIReady(){
+    player = new YT.Player('player', {
+      height: 225,
+      width: 400,
+      events: {
+        onStateChange: onPlayerStateChange
+      }
+    });
+
+    $(document).on('click', 'div#start', function(){
+      var randnum = Math.floor( Math.random() * <%= @all_count %> );
+      ary = <%= @impressions.to_json.html_safe %>
+      player.loadVideoById(ary[randnum]);
+    });
+  }
+
+  function onPlayerStateChange(e) {
+    if (e.data == YT.PlayerState.ENDED) {
+      $('#start').trigger('click');
+    }
+  }
+</script>
