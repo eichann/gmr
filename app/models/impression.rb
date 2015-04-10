@@ -1,3 +1,4 @@
 class Impression < ActiveRecord::Base
   belongs_to :channel
-end 
+  validates :url, presence: true
+end

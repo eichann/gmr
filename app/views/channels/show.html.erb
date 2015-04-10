@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
       <h1 class="title">
-        <i class="fa fa-music fa-2x"></i><%= @current_channel.name %>
+        <i class="fa fa-music fa-2x" style="font-size: 36px; padding: 0 10px 0 0;"></i><%= @current_channel.name %>
       </h1>
       <div class="request_message_box">
         <p class="request_message">Thank you for your request :)</p>
@@ -18,6 +18,14 @@
             <i class="fa fa-play fa-4x" style="color: white; margin-top: 21px;"></i>
           </div>
         </div>
+      </div>
+      <div class="contents_box">
+        <h3>
+          <i class="fa fa-bolt" style="font-size: 36px; padding: 0 10px 0 0;"></i>description
+        </h3>
+        <p>
+          <%= br(@current_channel.description) %>
+        </p>
       </div>
     </div>
   </div>
