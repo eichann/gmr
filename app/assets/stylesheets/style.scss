@@ -37,6 +37,7 @@ body{
 .title{
   text-align: center;
   color: #ddd;
+  font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
 
 .request_message_box{
@@ -62,10 +63,12 @@ body{
 }
 
 .request_message{
+  font-size: 24px;
   display: none;
   color: #eee;
   text-align: center;
   line-height: 100px;
+  font-family: fantasy;
 }
 
 .create-btn{
