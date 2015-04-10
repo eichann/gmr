@@ -1,0 +1,10 @@
+
+<div class="col-xs-12 col-sm-6 col-md-4 ">
+  <%= link_to "/channels/#{channel.id}" do %>
+    <div class="channel_box">
+      <img src='/images/contents/main1.jpg' class="channel_img") %>
+      <h3 class="channel_name"><%= channel.name.truncate(12, omission: "...") %></h3>
+      <p class="channel_description"><%= channel.description.truncate(85, omission: "...") %></p>
+    </div>
+  <% end %>
+</div>

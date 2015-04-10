@@ -1,6 +1,7 @@
 class ChannelsController < ApplicationController
   def show
-    @impressions = Channel.find(id_params[:id]).impressions.map { |i| i.url.split("=")[1]}
+    @current_channel = Channel.find(id_params[:id])
+    @impressions = @current_channel.impressions.map { |i| i.url.split("=")[1]}
     @all_count = @impressions.count
   end
 
@@ -10,6 +11,7 @@ class ChannelsController < ApplicationController
 
   def create
     Channel.create(name: attr_params[:name], description: attr_params[:description])
+    redirect_to "/channels/#{Channel.last.id}"
   end
 
   def search
@@ -22,7 +24,7 @@ class ChannelsController < ApplicationController
     end
 
     def attr_params
-      parmas.permit(:name, :description)
+      params.require(:channel).permit(:name, :description)
     end
 
     def search_params
