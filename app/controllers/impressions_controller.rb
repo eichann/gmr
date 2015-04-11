@@ -3,7 +3,7 @@ class ImpressionsController < ApplicationController
   def index
     @current_channel = Channel.find(1)
     @all_count = Impression.count
-    @impressions = Impression.all.map { |i| i.url.split("=")[1]}
+    @impressions = Impression.all.map { |i| i.url.split( /=|&/ )[1]}
   end
 
   def create
