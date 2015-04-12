@@ -47,9 +47,9 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'sprockets'
+gem 'sprockets', '2.11.0'
 gem 'pry-rails'
 gem 'bootstrap-sass', '~> 3.3.4'
-gem 'sass-rails', '>= 3.2'
-gem 'compass-rails'
+gem 'sass-rails', '~> 4.0.2'
+gem 'compass-rails', '~> 2.0'
 

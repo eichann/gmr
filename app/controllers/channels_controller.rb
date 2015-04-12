@@ -10,8 +10,14 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    Channel.create(name: attr_params[:name], description: attr_params[:description])
+    Channel.create(name: attr_params[:name], description: attr_params[:description], password: attr_params[:password])
     redirect_to "/channels/#{Channel.last.id}"
+  end
+
+  def update
+    channel = Channel.find(id_params[:id])
+    channel.update(description: attr_params[:description])
+    redirect_to :back
   end
 
   def search

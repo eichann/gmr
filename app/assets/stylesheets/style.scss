@@ -10,6 +10,13 @@ body, ul, h1, h2, h3, h4{
   font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 
+
+h3{
+  font-size: 30px;
+  color: #eee;
+  margin:0 0 30px 0;
+}
+
 input:focus {
   outline: none;
 }
@@ -40,6 +47,10 @@ body{
   font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
 
+.bata{
+  font-size: 20px;
+}
+
 .request_message_box{
   margin: 0 auto;
   height: 100px;
@@ -53,13 +64,9 @@ body{
   // background-color: #eee;
   width: 350px;
   // opacity: 0.8;
-  h3{
-    font-size: 30px;
-  }
   p{
-    font-size: 18 px;
-    margin: 30px 0 0 0;
-    padding: 0 0 200px 0;
+    font-size: 18px;
+    padding: 0 0 100px 0;
   }
 }
 
@@ -78,7 +85,7 @@ body{
 
 .yt-set{
   width: 350px;
-  margin: 50px auto 0;
+  margin: 0 auto;
 }
 
 .controll-box{
@@ -107,11 +114,7 @@ body{
 
 .form-wrap{
   width: 350px;
-  margin:20px auto 0;
-}
-
-.form{
-
+  margin:20px auto 50px;
 }
 
 .request-form{
