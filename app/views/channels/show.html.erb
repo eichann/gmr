@@ -28,9 +28,11 @@
         <p>
           <%= br(@current_channel.description) %>
         </p>
-        <button class="btn btn-success create-btn" data-toggle="modal" data-target="#edit-channel">
-          <i class="fa fa-plus"></i>edit
-        </button>
+        <% if @current_channel.enable_request %>
+          <button class="btn btn-success create-btn" data-toggle="modal" data-target="#edit-channel">
+            <i class="fa fa-plus"></i>edit
+          </button>
+        <% end %>
         <div class="modal fade" id="edit-channel">
           <div class="modal-dialog">
             <div class="modal-content">
