@@ -51,4 +51,5 @@ gem 'sprockets'
 gem 'pry-rails'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '>= 3.2'
+gem 'compass-rails'
 
