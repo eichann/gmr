@@ -1,12 +1,14 @@
 class Channel < ActiveRecord::Base
   #association
   has_many :impressions
-  #callback
-  # after_create :redirect_to_channel
 
-  # private
-  # def redirect_to_channel
-  #   Main.redirect_to "/channels/#{id}"
-  # end
+  def enable_request!
+    if enable_request
+      self.enable_request = false
+    else
+      self.enable_request = true
+    end
+    save
+  end
 
 end

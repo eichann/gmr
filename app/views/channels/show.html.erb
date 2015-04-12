@@ -8,9 +8,11 @@
       <div class="request_message_box">
         <p class="request_message">Thank you for your request :)</p>
       </div>
-      <div class="form-wrap">
-        <%= render :partial => "common/form"%>
-      </div>
+      <% if @current_channel.enable_request %>
+        <div class="form-wrap">
+          <%= render :partial => "common/form"%>
+        </div>
+      <% end %>
       <div class="yt-set clearfix">
         <div id="player"></div>
         <div class="controll-box">
@@ -26,6 +28,12 @@
         <p>
           <%= br(@current_channel.description) %>
         </p>
+      </div>
+      <div class="form-wrap">
+        <%= form_tag("/channels/#{@current_channel.id}/check_password", :method => :post, :id => :form) do %>
+        <input type="text" id="post" name="password" class="request-form" placeholder="channel-password">
+        <input type="submit" value="confirm" class="request-button">
+        <% end %>
       </div>
     </div>
   </div>
