@@ -1,8 +1,10 @@
 class ChannelsController < ApplicationController
   def show
     @current_channel = Channel.find(id_params[:id])
-    @impressions = @current_channel.impressions.map { |i| i.url.split( /=|&/ )[1]}
-    @all_count = @impressions.count
+    impressions = @current_channel.impressions.map { |i| i.url.split( /=|&/ )[1]}
+    @impressions = impressions.shuffle
+    @all_count = impressions.count
+    @num = 0
   end
 
   def new

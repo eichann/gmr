@@ -24,6 +24,21 @@
 
 <script>
   var player;
+  num = 0;
+  ary = <%= @impressions.to_json.html_safe %>;
+
+  function shuffle(ary) {
+  var n = ary.length, t, i;
+
+  while (n) {
+    i = Math.floor(Math.random() * n--);
+    t = ary[n];
+    ary[n] = ary[i];
+    ary[i] = t;
+  }
+
+  return ary;
+  }
 
   function onYouTubeIframeAPIReady(){
     player = new YT.Player('player', {
@@ -36,8 +51,12 @@
 
     $(document).on('click', 'div#start', function(){
       var randnum = Math.floor( Math.random() * <%= @all_count %> );
-      ary = <%= @impressions.to_json.html_safe %>
-      player.loadVideoById(ary[randnum]);
+      if (<%= @all_count %> == num) {
+        num = 0;
+        shuffle(ary)
+      };
+      player.loadVideoById(ary[num]);
+      num += 1
     });
   }
 
