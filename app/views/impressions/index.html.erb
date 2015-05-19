@@ -50,7 +50,6 @@
     });
 
     $(document).on('click', 'div#start', function(){
-      var randnum = Math.floor( Math.random() * <%= @all_count %> );
       if (<%= @all_count %> == num) {
         num = 0;
         shuffle(ary)

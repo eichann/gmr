@@ -4,7 +4,6 @@ class ChannelsController < ApplicationController
     impressions = @current_channel.impressions.map { |i| i.url.split( /=|&/ )[1]}
     @impressions = impressions.shuffle
     @all_count = impressions.count
-    @num = 0
   end
 
   def new
