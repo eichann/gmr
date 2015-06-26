@@ -63,7 +63,6 @@
 
   function onPlayerStateChange(e) {
     if (e.data == YT.PlayerState.ENDED) {
-      $('#start').trigger('click');
       if (<%= @all_count %> == num) {
         num = 0;
         shuffle(ary)
