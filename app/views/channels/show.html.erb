@@ -86,6 +86,7 @@
   }
 
   function onYouTubeIframeAPIReady(){
+    var event = 'ontouchstart' in window ? 'touchend' : 'click';
     player = new YT.Player('player', {
       height: 200,
       width: 350,
@@ -94,7 +95,7 @@
       }
     });
 
-    $(document).on('click', 'div#start', function(){
+    $(document).on(event, 'div#start', function(){
       if (<%= @all_count %> == num) {
         num = 0;
         shuffle(ary)
