@@ -56,7 +56,6 @@
         shuffle(ary)
       };
       player.loadVideoById(ary[num]);
-      player.playVideo();
       num += 1
     });
   }
@@ -65,6 +64,7 @@
   function onPlayerStateChange(e) {
     if (e.data == YT.PlayerState.ENDED) {
       $('#start').trigger('click');
+      player.playVideo();
     }
   }
 </script>
