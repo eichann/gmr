@@ -57,6 +57,9 @@
       };
       player.loadVideoById(ary[num]);
       num += 1
+      function onPlayerReady(e) {
+        e.target.playVideo();
+      }
     });
   }
 
