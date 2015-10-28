@@ -91,7 +91,8 @@
       height: 200,
       width: 350,
       events: {
-        onStateChange: onPlayerStateChange
+        onStateChange: onPlayerStateChange,
+        onError: onPlayerError
       }
     });
 
@@ -116,4 +117,10 @@
       player.playVideo();
     }
   }
+
+  function onPlayerError(e) {
+    num += 1
+    player.loadVideoById(ary[num]);
+    player.playVideo();
+  };
 </script>
