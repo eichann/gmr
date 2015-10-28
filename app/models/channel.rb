@@ -2,6 +2,7 @@ class Channel < ActiveRecord::Base
   #association
   has_many :impressions
   validates :name, presence: true
+  validates :description, length: { maximum: 140 }
 
 
   def enable_request!
