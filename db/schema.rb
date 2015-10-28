@@ -11,11 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326160626) do
+ActiveRecord::Schema.define(version: 20151028071904) do
 
   create_table "channels", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
+    t.string   "name",           limit: 255
+    t.text     "description",    limit: 65535
+    t.string   "password",       limit: 255
+    t.boolean  "enable_request", limit: 1,     default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150326160626) do
     t.integer  "status",     limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "channel_id", limit: 4
   end
 
 end
