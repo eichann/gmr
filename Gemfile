@@ -33,7 +33,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'mysql2', '0.3.18'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -43,7 +42,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'mysql2', '0.3.18'
   gem 'rails_12factor', '0.0.2'
 end
 
@@ -52,4 +50,4 @@ gem 'pry-rails'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 4.0.2'
 gem 'compass-rails', '~> 2.0'
-
+gem 'mysql2', '0.3.18'
