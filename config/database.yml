@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: gmr_production
-  username: gmr
+  username: root
   password: <%= ENV['GMR_DATABASE_PASSWORD'] %>
