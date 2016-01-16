@@ -44,6 +44,11 @@ end
 group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'unicorn'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 gem 'sprockets', '2.11.0'
