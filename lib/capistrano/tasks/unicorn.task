@@ -1,4 +1,4 @@
-mespace :unicorn do
+namespace :unicorn do
   task :environment do
     set :unicorn_pid,    "#{current_path}/tmp/pids/unicorn.pid"
     set :unicorn_config, "#{current_path}/config/unicorn.conf.rb"
@@ -6,8 +6,8 @@ mespace :unicorn do
   def start_unicorn
     within current_path do
       execute :bundle, :exec, :unicorn, "-c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
+    end
   end
-end
   def stop_unicorn
     execute :kill, "-s QUIT $(< #{fetch(:unicorn_pid)})"
   end
