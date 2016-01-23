@@ -59,7 +59,7 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-server '153.126.152.39', port: 62606, user: 'koichiro', roles: %w{app}, ssh_options: {
+server '153.126.152.39', port: 62606, user: 'koichiro', roles: %w{app web}, ssh_options: {
     keys: %w(~/.ssh/id_rsa),
       forward_agent: true,
         auth_methods: %w(publickey)
