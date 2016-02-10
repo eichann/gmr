@@ -52,4 +52,4 @@ production:
   database: gmr_production
   username: root
   password: <%= ENV['GMR_DATABASE_PASSWORD'] %>
-  socket: /tmp/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
