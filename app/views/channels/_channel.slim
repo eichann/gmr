@@ -1,0 +1,8 @@
+.col-xs-12.col-sm-6.col-md-4
+ = link_to "/channels/#{channel.id}" do
+  .channel_box
+    img.channel_img src="/images/contents/main1.jpg"
+    h3.channel_name
+      = channel.name.truncate(12, omission: "...")
+    p.channel_description
+      = channel.description.truncate(85, omission: "...")
