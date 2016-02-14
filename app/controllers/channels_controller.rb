@@ -11,7 +11,7 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    Channel.create(name: attr_params[:name], description: attr_params[:description], password: attr_params[:password])
+    Channel.create(attr_params)
     redirect_to "/channels/#{Channel.last.id}"
   end
 
@@ -37,7 +37,7 @@ class ChannelsController < ApplicationController
     end
 
     def attr_params
-      params.require(:channel).permit(:name, :description, :password)
+      params.require(:channel).permit(:name, :image, :description, :password)
     end
 
     def search_params
