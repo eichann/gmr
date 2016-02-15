@@ -37,6 +37,13 @@ set :keep_releases, 3
 
 set :rbenv_ruby, '2.1.3'
 
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "~/.rbenv/shims:~/.rbenv/bin:$PATH",
+  ACCESS_KEY_ID: ENV["ACCESS_KEY_ID"],
+        SECRET_ACCESS_KEY: ENV["SECRET_ACCESS_KEY"]
+}
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
