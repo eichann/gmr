@@ -48,6 +48,11 @@ html
                             = f.text_field :name, placeholder: "name", cols:"30", rows:"10", autofocus:"true", class:"form-control"
                         .form-group
                           label.col-sm-3
+                            | Image
+                          .col-sm-9
+                            = f.file_field :image
+                        .form-group
+                          label.col-sm-3
                             | Password(option)
                           .col-sm-9
                             = f.text_field :password, placeholder: "password", cols:"30", rows:"10", autofocus:"true", class:"form-control"

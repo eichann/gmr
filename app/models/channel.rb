@@ -4,6 +4,8 @@ class Channel < ActiveRecord::Base
   validates :name, presence: true
   validates :description, length: { maximum: 140 }
 
+  mount_uploader :image, ImageUploader
+
 
   def enable_request!
     if enable_request
