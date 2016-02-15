@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
         config.fog_directory  = 'on-air-tokyo'
         config.asset_host = 'https://s3.amazonaws.com/on-air-tokyo'
     when 'production'
-        config.fog_directory  = 'on-air.tokyo'
+        config.fog_directory  = 'on-air-tokyo'
         config.asset_host = 'https://s3.amazonaws.com/on-air-tokyo'
     end
 end
