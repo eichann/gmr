@@ -9,6 +9,23 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     = csrf_meta_tags
   body
+    header
+      .wrapper
+        .header-content
+          .header-wrapper
+            #header-left
+              form.search
+                input.search-text[type='text']
+                input.submit-btn[type='submit' value="EXPLORE"]
+            #header-right
+              ul.auth-nav
+                li
+                  a[href='#']
+                    |SIGN UP
+                li
+                  a[href='#']
+                    |LOG IN
+
     nav.navbar.navbar-default[style="opacity: "]
       .container-fluid
         .navbar-header
