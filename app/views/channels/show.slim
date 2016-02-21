@@ -1,3 +1,11 @@
+.dynamic-header[style="background: url(#{image_url = @current_channel.image.url || "/images/contents/main1.jpg"}); background-size: cover; background-position: 50% 50%;"]
+  .dynamic-cover
+    .dynamic-container
+      .yt-set
+        #player
+        .controll-box
+          #start
+            i.fa.fa-play.fa-4x style=("color: white; margin-top: 21px;") 
 .container
   .row
     .col-xs-12.col-sm-12.col-md-12
@@ -8,11 +16,6 @@
       - if @current_channel.enable_request
         .form-wrap
           = render :partial => "common/form"
-      .yt-set.clearfix
-        #player
-        .controll-box
-          #start
-            i.fa.fa-play.fa-4x style=("color: white; margin-top: 21px;") 
       .contents_box
         h3
           i.fa.fa-bolt style=("font-size: 36px; padding: 0 10px 0 0;") 

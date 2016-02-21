@@ -1,4 +1,4 @@
-= form_tag '/impressions', :method => :post, :id => :form, :remote => true do
+= form_tag '/impressions', :method => :post, :id => :form do
   input#post.request-form name="url" placeholder="youtube-url" type="text" /
   input name="channel_id" type="hidden" value="#{@current_channel.id}"
   input.request-button type="submit" value="request"
