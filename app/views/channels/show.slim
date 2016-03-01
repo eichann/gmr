@@ -1,54 +1,46 @@
 .dynamic-header[style="background: url(#{image_url = @current_channel.image.url || "/images/contents/main1.jpg"}); background-size: cover; background-position: 50% 50%;"]
   .dynamic-cover
-    .dynamic-container
+    .dynamic-container.claerfix
       .yt-set
         #player
         .controll-box
           #start
-            i.fa.fa-play.fa-4x style=("color: white; margin-top: 21px;") 
-.container
+            i.fa.fa-play.fa-4x style=("color: white; margin-top: 21px;")
+      .show-channel-info-box
+        h1.title
+          = @current_channel.name
+        .description-box
+          .meta-box
+            span.date-time
+              | Feb 26, 2015
+            span.pipe
+              | |
+            span.song-count
+              | 200 songs
+            span.pipe
+              | |
+            span.like-count
+              | 180like
+          .tag-box
+            span.tag
+              | rock
+            span.tag
+              | vocaloid
+            span.tag
+              | Alternative
+            span.tag
+              | Fork
+
+.wrapper
   .row
-    .col-xs-12.col-sm-12.col-md-12
-      h1.title
-        = @current_channel.name
-      .request_message_box
-        p.request_message Thank you for your request :)
-      - if @current_channel.enable_request
-        .form-wrap
-          = render :partial => "common/form"
-      .contents_box
-        h3
-          i.fa.fa-bolt style=("font-size: 36px; padding: 0 10px 0 0;") 
-          | description
-        p
-          = br(@current_channel.description)
-        - if @current_channel.enable_request
-          button.btn.btn-success.create-btn data-target="#edit-channel" data-toggle="modal" 
-            i.fa.fa-plus
-            | edit
-        #edit-channel.modal.fade
-          .modal-dialog
-            .modal-content
-              .modal-header
-                button.close aria-label="Close" data-dismiss="modal" type="button" 
-                  span aria-hidden="true"  ×
-                h4.modal-title Edit Channel
-              .modal-body
-                = form_for @current_channel, html: {class: 'form-horizontal'}, :url => {:controller => :channels, :action => :update} do |f|
-                  .form-group
-                    label.col-sm-3 Description
-                    .col-sm-9
-                      = f.text_area :description, placeholder: "about this channel", cols:"30", rows:"10", autofocus:"true",value: "#{@current_channel.description}", class:"form-control"
-                  = f.submit "Create", class:"btn btn-success withripple"
-            /! /.modal-content
-          /! /.modal-dialog
-      .form-wrap
-        h3
-          i.fa.fa-key.fa-fw style=("font-size: 36px; padding: 0 10px 0 0;") 
-          | password
-        = form_tag("/channels/#{@current_channel.id}/check_password", :method => :post, :id => :form) do
-          input#post.request-form name="password" placeholder="channel-password" type="text" /
-          input.request-button type="submit" value="confirm" /
+    .content-box
+      .col-sm-8
+        .concept-box
+          .channel-owner-box
+          .channel-details-box
+            channel-details
+      .col-sm-4
+        .advertisement
   javascript:
      var player;
      num = 0;
@@ -71,7 +63,7 @@
        var event = 'ontouchstart' in window ? 'touchend' : 'click';
        player = new YT.Player('player', {
          height: 200,
-         width: 350,
+         width: 360,
          events: {
            onStateChange: onPlayerStateChange,
            onError: onPlayerError
