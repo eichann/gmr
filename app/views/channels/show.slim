@@ -30,6 +30,25 @@
               | Alternative
             span.tag
               | Fork
+          .request-button[data-toggle="modal" data-target="#new-channel"]
+            | request
+          #new-channel.modal.fade.bs-example-modal-lg
+            .modal-dialog.modal-lg
+              .modal-content
+                .modal-header
+                  button.close[type="button" data-dismiss="modal" aria-label="Close"]
+                    span[aria-hidden="true"]
+                      | ×
+                  h4.modal-title
+                    | Search songs
+                .modal-body
+                  .row
+                    .col-sm-12
+                      input#q
+                      input#search[type="button" value="Search!"]
+                    .col-sm-12
+                      ul#list
+
 
 .wrapper
   .row
@@ -42,9 +61,14 @@
       .col-sm-4
         .advertisement
   javascript:
-     var player;
+     var playerId = [
+       {area: 'player'},
+       {area: 'new-player'}
+     ];
+     var player = [];
      num = 0;
      ary = #{@impressions.to_json.html_safe};
+     channel_id = #{@current_channel.id.to_json.html_safe};
 
      function shuffle(ary) {
       var n = ary.length, t, i;
@@ -61,21 +85,22 @@
 
      function onYouTubeIframeAPIReady(){
        var event = 'ontouchstart' in window ? 'touchend' : 'click';
-       player = new YT.Player('player', {
-         height: 200,
-         width: 360,
-         events: {
-           onStateChange: onPlayerStateChange,
-           onError: onPlayerError
-         }
-       });
-
+       for(var i = 0; i < playerId.length; i++) {
+         player[i] = new YT.Player(playerId[i]['area'], {
+           height: 200,
+           width: 360,
+           events: {
+             onStateChange: onPlayerStateChange,
+             onError: onPlayerError
+           }
+         });
+       }
        $(document).on(event, 'div#start', function(){
          if (#{@all_count} == num) {
            num = 0;
            shuffle(ary)
          };
-         player.loadVideoById(ary[num]);
+         player[0].loadVideoById(ary[num]);
          num += 1
         });
      }
@@ -86,15 +111,13 @@
            num = 0;
            shuffle(ary)
          };
-         player.loadVideoById(ary[num]);
+         player[0].loadVideoById(ary[num]);
          num += 1
-         player.playVideo();
        }
      }
 
      function onPlayerError(e) {
        num += 1
-       player.loadVideoById(ary[num]);
+       player[0].loadVideoById(ary[num]);
        num += 1
-       player.playVideo();
      };
