@@ -1,74 +1,126 @@
-.container
+.top-dynamic-header.dynamic-header[style="background: url(#{asset_path("images/contents/topsample2.png")}); background-size: cover; background-position: 50% 50%;"]
+  .dynamic-cover.blur
+    .dynamic-secound-cover
+      .dynamic-container.claerfix
+        .yt-set
+          #player
+          .controll-box
+            #start
+              i.fa.fa-play.fa-4x style=("color: white; margin-top: 21px;")
+        .show-channel-info-box
+          h1.title
+            | Tell me your favorite song.
+          .description-box
+            .meta-box
+            .tag-box
+          .request-button[data-toggle="modal" data-target="#new-channel"]
+            | request
+          #new-channel.modal.fade.bs-example-modal-lg
+            .modal-dialog.modal-lg
+              .modal-content
+                .modal-header
+                  button.close[type="button" data-dismiss="modal" aria-label="Close"]
+                    span[aria-hidden="true"]
+                      | ×
+                  h4.modal-title
+                    | Search songs
+                .modal-body
+                  .row
+                    .col-sm-12
+                      input#q
+                      input#search[type="button" value="Search!"]
+                    .col-sm-12
+                      ul#list
+
+
+.wrapper
   .row
-    .col-xs-12.col-sm-12.col-md-12
-      h1.main-title
-        | On-Air
-        span.bata 
-          | (α)
-      .request_message_box
-        p.request_message Thank you for your request :)
-      .form-wrap
-        = render :partial => "common/form"
-      .yt-set.clearfix
-        #player
-        .controll-box
-          #start
-            i.fa.fa-play.fa-4x style="color: white; margin-top: 21px;"
+    .content-box
+      - @all_channels.each do |ch|
+        .col-sm-6
+          .concept-box
+            -url = ch.image? ?ch.image : "/images/contents/topsample.jpg"
+            =link_to image_tag(url, :class => "channel-thumb"), "/channels/#{ch.id}"
+            .channel-info
+              .channel-title
+                =link_to ch.name, "/channels/#{ch.id}"
+              / .channel-details
+              /   li
+              /     |piyo
+              /   li
+              /     |piyo
+              /   li
+              /     |piyo
+              / .channel-tags
+              /   .tag
+              /     |rock
+              /   .tag
+              /     |jazz
+              /   .tag
+              /     |japan
+              .channel-description
+                | #{ch.description.truncate(85, omission: "...")}
+
+
   javascript:
-    var player;
-    num = 0;
-    ary = #{@impressions.to_json.html_safe};
+     var playerId = [
+       {area: 'player'},
+       {area: 'new-player'}
+     ];
+     var player = [];
+     num = 0;
+     ary = #{@impressions.to_json.html_safe};
+     channel_id = #{@current_channel.id.to_json.html_safe};
 
-    function shuffle(ary) {
-    var n = ary.length, t, i;
+     function shuffle(ary) {
+      var n = ary.length, t, i;
 
-    while (n) {
-      i = Math.floor(Math.random() * n--);
-      t = ary[n];
-      ary[n] = ary[i];
-      ary[i] = t;
-    }
-
-    return ary;
-    }
-
-    function onYouTubeIframeAPIReady(){
-      var event = 'ontouchstart' in window ? 'touchend' : 'click';
-      player = new YT.Player('player', {
-        height: 200,
-        width: 350,
-        events: {
-          onStateChange: onPlayerStateChange,
-          onError: onPlayerError
-        }
-      });
-
-      $(document).on(event, 'div#start', function(){
-        if (#{@all_count} == num) {
-          num = 0;
-          shuffle(ary)
-        };
-        player.loadVideoById(ary[num]);
-        num += 1
-      });
-    }
-
-
-    function onPlayerStateChange(e) {
-      if (e.data == YT.PlayerState.ENDED) {
-        if (#{@all_count} == num) {
-          num = 0;
-          shuffle(ary)
-        };
-        player.loadVideoById(ary[num]);
-        num += 1
-        player.playVideo();
+      while (n) {
+        i = Math.floor(Math.random() * n--);
+        t = ary[n];
+        ary[n] = ary[i];
+        ary[i] = t;
       }
-    }
 
-    function onPlayerError(e) {
-      num += 1
-      player.loadVideoById(ary[num]);
-      num += 1
-      player.playVideo();
-    };
+      return ary;
+     }
+
+     function onYouTubeIframeAPIReady(){
+       var event = 'ontouchstart' in window ? 'touchend' : 'click';
+       for(var i = 0; i < playerId.length; i++) {
+         player[i] = new YT.Player(playerId[i]['area'], {
+           height: 200,
+           width: 360,
+           events: {
+             onStateChange: onPlayerStateChange,
+             onError: onPlayerError
+           }
+         });
+       }
+       $(document).on(event, 'div#start', function(){
+         if (#{@all_count} == num) {
+           num = 0;
+           shuffle(ary)
+         };
+         player[0].loadVideoById(ary[num]);
+         num += 1
+        });
+     }
+
+     function onPlayerStateChange(e) {
+       if (e.data == YT.PlayerState.ENDED) {
+         if (#{@all_count} == num) {
+           num = 0;
+           shuffle(ary)
+         };
+         player[0].loadVideoById(ary[num]);
+         num += 1
+       }
+     }
+
+     function onPlayerError(e) {
+       num += 1
+       player[0].loadVideoById(ary[num]);
+       num += 1
+     };
+

@@ -1,5 +1,5 @@
-.dynamic-header[style="background: url(#{image_url = @current_channel.image.url || "/images/contents/main1.jpg"}); background-size: cover; background-position: 50% 50%;"]
-  .dynamic-cover
+.show-page-header.dynamic-header[style="background: url(#{image_url = @current_channel.image.url || "/images/contents/main3.jpg"}); background-size: cover; background-position: 50% 50%;"]
+  .dynamic-cover.blur
     .dynamic-container.claerfix
       .yt-set
         #player
@@ -30,36 +30,25 @@
               | Alternative
             span.tag
               | Fork
-          .request-button[data-toggle="modal" data-target="#new-channel"]
-            | request
-          #new-channel.modal.fade.bs-example-modal-lg
-            .modal-dialog.modal-lg
-              .modal-content
-                .modal-header
-                  button.close[type="button" data-dismiss="modal" aria-label="Close"]
-                    span[aria-hidden="true"]
-                      | ×
-                  h4.modal-title
-                    | Search songs
-                .modal-body
-                  .row
-                    .col-sm-12
-                      input#q
-                      input#search[type="button" value="Search!"]
-                    .col-sm-12
-                      ul#list
+        .request-button[data-toggle="modal" data-target="#new-channel"]
+          | request
+        #new-channel.modal.fade.bs-example-modal-lg
+          .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                button.close[type="button" data-dismiss="modal" aria-label="Close"]
+                  span[aria-hidden="true"]
+                    | ×
+                h4.modal-title
+                  | Search songs
+              .modal-body
+                .row
+                  .col-sm-12
+                    input#q
+                    input#search[type="button" value="Search!"]
+                  .col-sm-12
+                    ul#list
 
-
-.wrapper
-  .row
-    .content-box
-      .col-sm-8
-        .concept-box
-          .channel-owner-box
-          .channel-details-box
-            channel-details
-      .col-sm-4
-        .advertisement
   javascript:
      var playerId = [
        {area: 'player'},
