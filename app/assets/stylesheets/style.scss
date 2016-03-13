@@ -55,7 +55,7 @@ header{
         height: 100%;
         width: 30%;
         float: right;
-        padding-right: 60px;
+        // padding-right: 60px;
         .auth-nav{
           padding: 8px 0 0 0;
           font-size: 14px;
@@ -95,6 +95,7 @@ input:focus {
 }
 
 body{
+    height: 100%;
     background: #eeeeee;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -121,7 +122,8 @@ body{
   font-family: cursive;
 }
 .title{
-  color: #ddd;
+  font-size: 56px;
+  color: #eee;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 3px;
   font-weight: 900;
@@ -253,12 +255,11 @@ a:hover {
 // channel's show page
 
 .dynamic-header{
-  height: 400px;
+  height: 100%;
   box-sizing: border-box;
 
   .dynamic-cover{
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
 
     .dynamic-container{
       height: 100%;
@@ -269,13 +270,16 @@ a:hover {
 
       .show-channel-info-box{
         float: left;
+        position: relative;
         width: 810px;
         padding: 0 0 0 30px;
+        min-height: 320px;
 
         .description-box{
 
           .meta-box{
-            color: #ddd;
+            min-height: 30px;
+            color: #eee;
             padding: 0 0 10px 0;
 
             .pipe{
@@ -284,6 +288,8 @@ a:hover {
           }
 
           .tag-box{
+              min-height: 48px;
+
             .tag{
               padding: 6px 13px;
               font-size: 15px;
@@ -294,29 +300,34 @@ a:hover {
               border: 1px solid #eee;
               border-radius: 20px;
               display: inline-block;
-              color: #ddd;
+              color: #eee;
               text-decoration: none;
               &:hover{
                 background-color: #999;
               } 
             }
           }
-
-          .request-button{
-            margin: 77px 0 0 0;
-            font-size: 19px;
-            line-height: 19px;
-            display: inline-block;
-              color: #ddd;
-            background: rgba(90, 193, 167, 0.9);
-            height: 45px;
-            border-radius: 5px;
-            padding: 13px 20px;
-          }
+        }
+        .request-button{
+          position: absolute;
+          bottom: 0;
+          left: 30px;
+          font-size: 19px;
+          line-height: 19px;
+          display: inline-block;
+            color: #eee;
+          background: rgba(90, 193, 167, 0.9);
+          height: 45px;
+          border-radius: 5px;
+          padding: 13px 20px;
         }
       }
     }
   }
+}
+
+.top-dynamic-header{
+  height: 400px;
 }
 
 .content-box{
@@ -324,9 +335,75 @@ a:hover {
 }
 
 .concept-box{
-  height: 300px;
+  margin: 0 0 20px 0;
+  height: 260px;
   background-color: white;
+
+  .channel-thumb{
+    float: left;
+    margin: 10px 5px 0 0;
+    height: 240px;
+    width: 240px;
+  }
+
+  .channel-info{
+    float: left;
+    width: 280px;
+    height: 190px;
+    padding: 0 0 0 10px;
+  }
 }
+
+
+
+.channel-title{
+  margin-top: 10px;
+  font-size: 22px;
+  font-weight: 900;
+  
+
+  a{
+    color: #555;
+    text-decoration: none;
+  }
+}
+
+.channel-details{
+  li{
+    display: inline-block;
+    padding: 0 15px 0 0;
+    span{
+      padding: 0 0 0 3px;
+    }
+  }
+}
+.channel-tags{
+
+  .tag{
+    padding: 6px 13px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0 5px 5px 0;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    display: inline-block;
+    color: #666;
+    text-decoration: none;
+    &:hover{
+      background-color: #ddd;
+    }
+  }
+}
+
+.channel-description{
+  margin: 5px 0 0 0;
+}
+
+
+
+
 .advertisement{
   height: 300px;
   background-color: white;
@@ -359,6 +436,40 @@ a:hover {
 
 .display-switch{
   display: block;
+}
+
+* {
+    position: relative;
+}
+ 
+.blur {
+    position: absolute;
+    width: 100%;
+    // margin:-150px 0 0 0;
+    background: inherit;
+    background-position:center center;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.5);
+    overflow: hidden;
+}
+/* ブラー効果 */
+.blur:before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: inherit;
+    -webkit-filter: blur( 8px) saturate(2);
+    -moz-filter: blur(8px) saturate(2);
+    filter: blur(8px) saturate(2);
+    filter: url(../img/filters.xml#blur_saturate);
+}
+
+.dynamic-secound-cover{
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 
