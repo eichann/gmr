@@ -1,6 +1,7 @@
 class ImpressionsController < ApplicationController
 
   def index
+    @all_channels = Channel.all
     @current_channel = Channel.find(1)
     @all_count = Impression.count
     impressions = Impression.all.map { |i| i.url.split( /=|&/ )[1]}
