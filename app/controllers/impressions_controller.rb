@@ -1,7 +1,7 @@
 class ImpressionsController < ApplicationController
 
   def index
-    @all_channels = Channel.all
+    @all_channels = Channel.page(params[:page]).per(4)
     @current_channel = Channel.find(1)
     @all_count = Impression.count
     impressions = Impression.all.map { |i| i.url.split( /=|&/ ).pop}
