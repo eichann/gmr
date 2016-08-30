@@ -51,7 +51,7 @@ $(function(){
         url: "/impressions",
         type: "POST",
         data: {channel_id: channel_id,
-                url: player[1]['F']['videoUrl']
+                url: player[1]['j']['videoUrl']
                 },
         dataType: "html",
         success: function(data) {
