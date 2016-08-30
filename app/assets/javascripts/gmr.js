@@ -47,6 +47,7 @@ $(function(){
   });
 
   $("#add-song-button").click(function(){
+    console.log(player[1]['j']['videoUrl'])
     $.ajax({
         url: "/impressions",
         type: "POST",
