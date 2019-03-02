@@ -47,12 +47,13 @@ $(function(){
   });
 
   $("#add-song-button").click(function(){
-    console.log(player[1]['j']['videoUrl'])
+    console.log(player[1].getVideoUrl())
+    var url = player[1].getVideoUrl();
     $.ajax({
         url: "/impressions",
         type: "POST",
         data: {channel_id: channel_id,
-                url: player[1]['j']['videoUrl']
+                url: url
                 },
         dataType: "html",
         success: function(data) {
@@ -65,5 +66,3 @@ $(function(){
   });
 
 });
-
-
