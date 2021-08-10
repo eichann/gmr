@@ -19,7 +19,7 @@ $(function(){
     var url = "https://www.googleapis.com/youtube/v3/search";
     var options = {
       'q': $('#q').val(),
-      'key': 'AIzaSyDKTxyZFS1_nozvBkqkXOlroR9SyQYoUeM',
+      'key': 'AIzaSyBVZsvnYDYssm2u3br2Ma84wLm0TmREWdQ',
       'part': 'id, snippet',
       'alt': "json",
       'type': 'video',
