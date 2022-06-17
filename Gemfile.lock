@@ -86,6 +86,7 @@ GEM
       sass (~> 3.2.19)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    concurrent-ruby (1.1.10)
     debug_inspector (0.0.2)
     erubis (2.7.0)
     excon (0.52.0)
@@ -237,7 +238,8 @@ GEM
       ruby_parser (~> 3.5)
     html2slim (0.2.0)
       hpricot
-    i18n (0.7.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jbuilder (2.6.0)
@@ -266,7 +268,9 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mimemagic (0.3.2)
+    mimemagic (0.4.3)
+      nokogiri (~> 1)
+      rake
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
